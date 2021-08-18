@@ -1,0 +1,101 @@
+<odoo> 
+<data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="models_list_view"> <!--first_modul.list par models_list_view-->
+    <field name="name">Liste des Recruts</field> 
+    <field name="model">first_modul.first_modul</field> <!--ramplace .first_modul par first_modul.models-->
+      <field name="arch" type="xml">
+        <tree> 
+          <field name="nom"/>
+          <field name="prenoms"/> 
+          <field name="genre"/> 
+          <field name="piece_Identite"/> 
+          <field name="telephone"/> 
+          <field name="date_Naissance"/> 
+          <field name="email"/> 
+          <field name="niveau"/>
+          <field name="domaine_competence" />
+          <field name="date_inscription"/>
+        </tree> 
+      </field>
+    </record>
+
+
+ <!-- explicit form view definition -->
+
+    <record model="ir.ui.view" id="models_form_view"> <!--first_modul.list par models_form_view-->
+    <field name="name">Enregistrement Agent</field> 
+    <field name="model">first_modul.first_modul</field><!--ramplace first_modul.first_modul par first_modul.models-->
+      <field name="arch" type="xml">
+          <form> 
+         <center> <h1>Enregistrement</h1> </center>
+            <group> <!--group principal-->
+
+                <group> <!--group a gauche-->
+                <center><h2>Informations Personnelles</h2></center>
+                  <field name="nom" required="1"/> 
+                  <field name="prenoms" required="1"/> 
+                  <field name="genre"/>
+                 
+                  <field name="piece_Identite" required="1"/> 
+                </group> <!--fin group a gauche-->
+            
+                <group> <!--group a droite-->
+                <center><h2>Informations Complementaire</h2></center>
+                  <field name="telephone"/>
+                  <field name="date_Naissance"/> 
+                  <field name="email" placeholder="ton_mail@gmail.com" required="1"/> 
+                  <field name="niveau" placeholder="veuillez selectionner votre niveau d'étude"/>
+                  <field name="date_inscription"/>
+                </group> <!--fin group a droite-->
+
+            </group> <!--fin group principal-->
+
+                <group>
+                    <group>
+                    <group>
+                <field name="question"/>
+
+                
+                  
+                <field name="competence" />         
+                <field name="domaine_competence" attrs="{'invisible':[('competence','=','2')]}"/>
+                          
+                  </group>
+                  </group>
+                </group>
+
+            <group>
+            <field name="fichier" required="1"/>
+            </group>
+
+          </form> 
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="models_action_window">  
+      <field name="name">Enregistrement Agent</field> 
+      <field name="res_model">first_modul.first_modul</field> 
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="firstModul" id="first_modul.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="models" id="first_modul_models_cat" parent="first_modul.menu_root"/> 
+
+    <!-- actions -->
+    <menuitem name="Listes des Agents" id="first_modul_models__list" parent="first_modul_models_cat" 
+              action="models_action_window"/> 
+
+  </data> 
+  </odoo>
+
