@@ -1,0 +1,31 @@
+<odoo>
+  <data>
+       <!-- blog.herit inherit form view -->
+    <record id="mavueform" model="ir.ui.view">
+      <field name="name">blog.post.inherit.view.form</field><!--mondumodel-->
+      <field name="model">blog.post</field>
+      <field name="inherit_id" ref="website_blog.view_blog_post_form"/> <!--ID_externe du formulaire pour blog_website_blog.view_blog_post_form-->
+      <field name="arch" type="xml">
+        <field name="website_id" position="after"> <!--position du champ ajoute-->
+            <field name="description"/>
+            <field name="date_poste"/>
+        </field>
+      </field>
+    </record>
+
+  <!-- project.task inherit tree view -->
+    <record id="identifiantdemavuelisteajoutee" model="ir.ui.view">
+      <field name="name">blog.post.inherit.view.tree</field> <!--iddelavueliste-->
+      <field name="model">blog.post</field>
+      <field name="inherit_id" ref="website_blog.view_blog_post_list"/><!--idexternedelavueliste  pourblog_website_blog.view_blog_post_list-->
+      <field name="arch" type="xml">
+        <field name="website_id" position="after">
+          <field name="date_poste"/>
+        </field>
+
+      </field>
+    </record>
+
+
+  </data>
+</odoo>
